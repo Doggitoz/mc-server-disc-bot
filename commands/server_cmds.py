@@ -54,5 +54,5 @@ class ServerCommands:
                 await interaction.response.send_message("❌ You are not authorized.", ephemeral=True)
 
         start.error = check_error
-        stop.error = check_error
-        restart.error = check_error
+        # stop.error = check_error
+        # restart.error = check_error
