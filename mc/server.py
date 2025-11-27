@@ -1,8 +1,9 @@
 import os
 import subprocess
+import config
+
 from mc.rcon_client import RconClient
 from dotenv import load_dotenv
-import config
 
 # Load environment variables
 load_dotenv()
@@ -45,7 +46,7 @@ def start_server() -> str:
 def stop_server() -> str:
     with RconClient() as rcon:
         try:
-            response = rcon.command("stop")
+            rcon.command("stop")
             return "Server is stopping..."
         except ConnectionRefusedError:
             return "Unable to stop server. Server might already be down."
