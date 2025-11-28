@@ -6,7 +6,13 @@ class DiscordChatBridge:
         self.channel_id = None
 
     async def setup(self, channel_id: int):
-        self.channel = self.bot.get_channel(channel_id)
+        channel = self.bot.get_channel(channel_id)
+        if channel:
+            print(f"Channel found: {channel.name}, Type: {channel.type}")
+        else:
+            print("Channel not found.")
+            return
+        self.channel = channel
         if not self.channel:
             print("Chat channel with id not found.")
         

@@ -43,18 +43,18 @@ def general_status() -> str:
 def start_server() -> str:
     return find_and_run_server_script(config.SERVER_SCRIPT_DIRECTORY)
 
-# def stop_server() -> str:
-#     with RconClient() as rcon:
-#         try:
-#             rcon.command("stop")
-#             return "Server is stopping..."
-#         except ConnectionRefusedError:
-#             return "Unable to stop server. Server might already be down."
+def stop_server() -> str:
+    with RconClient() as rcon:
+        try:
+            rcon.command("stop")
+            return "Server is stopping..."
+        except ConnectionRefusedError:
+            return "Unable to stop server. Server might already be down."
 
-# def restart_server() -> str:
-#     stop_message = stop_server()
-#     start_message = find_and_run_server_script(config.SERVER_SCRIPT_DIRECTORY)
-#     return f"{stop_message}\n{start_message}"
+def restart_server() -> str:
+    stop_message = stop_server()
+    start_message = find_and_run_server_script(config.SERVER_SCRIPT_DIRECTORY)
+    return f"{stop_message}\n{start_message}"
 
 def find_and_run_server_script(directory: str) -> str:
     """Find a .sh or .bat file in the given directory and run it in that directory."""
